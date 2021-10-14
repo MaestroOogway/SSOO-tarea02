@@ -1,0 +1,8 @@
+#!/bin/bash
+curl -s https://api.warframe.market/v1/items | jq ".[]|{payload: {items:[.[] | map(.) | .[] |{id:.id, item:.item_name}]}}" > items.json
+if [ $? == 0 ]; then
+        echo "Json creado con exito"
+else
+        echo "El programa no se a ejecutado correctamente"
+fi
+echo "programa terminado"
